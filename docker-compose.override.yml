@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  ocelotwithconsul:     
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_ocelotwithconsul
+      - net_backendservices
+
+  valueservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5004
+      - ConsulConfig__Address=http://c_consul:8500
+      - ConsulConfig__ServiceAddress=http://v_valueservice:5004
+      - ConsulConfig__ServiceName=ValueService
+      - ConsulConfig__ServiceId=Value
+    ports:
+      - "5004:5004"
+    networks:
+      - net_backendservices
+      - net_ocelotwithconsul
+    depends_on:
+      - ocelotwithconsul
+      - c_consul
+    external_links:
+      - c_consul
+
+  c_consul:
+    ports:
+      - 8500:8500
+      - 8600:8600/tcp
+      - 8600:8600/udp
+    networks:
+      - net_ocelotwithconsul
+      - net_backendservices
+
+networks:
+  net_backendservices:
+    driver: bridge
+    external: true
+  net_ocelotwithconsul:
+    driver: bridge
+    external: true

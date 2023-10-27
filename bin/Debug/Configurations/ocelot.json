@@ -1,0 +1,81 @@
+{
+    "Routes": [
+      {
+        "UseServiceDiscovery": true,
+        "ServiceName": "ValueService",
+        "DownstreamPathTemplate": "/api/values/{everything}",
+        "DownstreamScheme": "http",
+
+        "UpstreamPathTemplate": "/values/{everything}",
+        "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+        "UpstreamScheme": "http",
+        "RouteIsCaseSensitive": false,
+        "LoadBalancerOptions": {
+          "Type": "RoundRobin"
+        }
+      }
+    ],
+
+    "GlobalConfiguration": {
+      "BaseUrl": "http://ocelotwithconsul:5000",
+      "ServicesDiscoveryProvider": {
+        "Host": "c_consul",
+        "Port": 8500,
+        "Type": "Consul"
+      }
+    }
+  //"ReRoutes": [
+  //  {
+  //    "UseServiceDiscovery": true,
+  //    "DownstreamPathTemplate": "/{url}",
+  //    "DownstreamScheme": "http",
+  //    "ServiceName": "ValueService",
+  //    "LoadBalancerOptions": {
+  //      "Type": "Consul"
+  //    },
+  //    "UpstreamPathTemplate": "/{url}",
+  //    "UpstreamHttpMethod": [ "Get" ],
+  //    "ReRoutesCaseSensitive": false
+  //  }
+  //],
+  //"GlobalConfiguration": {
+  //  "BaseUrl":  "http://localhost:6000",
+  // "ServiceDiscoveryProvider": {
+  //    "Host": "localhost",
+  //    "Port": 8500,
+  //    "Type": "Consul",
+  //    "PollingInterval": 100
+  //  }
+  //}
+
+  //"Routes": [
+  //  {
+  //    "Servicename": "ValueService",
+  //    "DownstreamPathTemplate": "/{url}",
+  //    "DownstreamScheme": "http",
+  //    "UpstreamPathTemplate": "/{url}",
+  //    "UpstreamHttpMethod": [ "GET" ],
+  //    "UseServiceDiscovery": true,
+  //    "RouteIsCaseSensitive": false,
+  //    "LoadBalancerOptions": {
+  //      "Type": "RoundRobin"
+  //    },
+  //    "QoSOptions": {
+  //      "ExceptionsAllowedBeforeBreaking": 3,
+  //      "DurationOfBreak": 5000,
+  //      "TimeoutValue": 2000
+  //    }
+  //  }
+  //],
+  //"GlobalConfiguration": {
+  //  "BaseUrl": "http://localhost:5000",
+  //  "RequestIdKey": "OcRequestId",
+  //  "UseServiceDiscovery": true,
+  //  "ServiceDiscoveryProvider": {
+  //    "Host": "localhost",
+  //    "Port": 8500,
+  //    "Type": "Consul",
+  //    "PollingInterval": 100
+  //  }
+  //}
+}

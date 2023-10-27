@@ -1,0 +1,102 @@
+name: dockercompose17573701921900048168
+services:
+  consul:
+    command:
+      - consul
+      - agent
+      - -dev
+      - -log-level=warn
+      - -ui
+      - -client=0.0.0.0
+    container_name: consul
+    hostname: consul
+    image: consul:1.15.4
+    networks:
+      common_network: null
+    ports:
+      - mode: ingress
+        target: 8500
+        published: "8500"
+        protocol: tcp
+  services.gateway:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotwithConsul
+      dockerfile: ValueService/Dockerfile
+    container_name: services.gateway
+    depends_on:
+      consul:
+        condition: service_started
+        required: true
+      valueservice1:
+        condition: service_started
+        required: true
+      valueservice2:
+        condition: service_started
+        required: true
+      valueservice3:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    hostname: services.gateway
+    image: services.gateway:latest
+    networks:
+      common_network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5000"
+        protocol: tcp
+    restart: on-failure
+  valueservice1:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotwithConsul
+      dockerfile: \ValueService\Dockerfile
+    container_name: valueservice1
+    depends_on:
+      consul:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ServiceConfig__Address: valueservice1
+      ServiceConfig__DiscoveryAddress: http://consul:8500
+      ServiceConfig__HealthCheckEndPoint: healthcheck
+      ServiceConfig__Id: ValueService-5004
+      ServiceConfig__Name: ValueService
+      ServiceConfig__Port: "80"
+    hostname: valueservice1
+    image: valueservice:latest
+    networks:
+      common_network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5004"
+        protocol: tcp
+    restart: on-failure
+  valueservice2:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotwithConsul
+      dockerfile: ValueService/Dockerfile
+    container_name: valueservice2
+    hostname: valueservice2
+    image: valueservice:latest
+    networks:
+      common_network: null
+    restart: on-failure
+  valueservice3:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotwithConsul
+      dockerfile: ValueService/Dockerfile
+    container_name: valueservice3
+    hostname: valueservice3
+    image: valueservice:latest
+    networks:
+      common_network: null
+    restart: on-failure
+networks:
+  common_network:
+    name: dockercompose17573701921900048168_common_network
+    driver: bridge

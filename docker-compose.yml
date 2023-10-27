@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  ocelotwithconsul:
+    container_name: ocelotwithconsul
+    image: ${DOCKER_REGISTRY-}ocelotwithconsul
+    build:
+      context: .
+      dockerfile: OcelotWithConsul/Dockerfile
+
+  valueservice:
+    container_name: valueservice
+    image: ${DOCKER_REGISTRY-}valueservice
+    build:
+      context: .
+      dockerfile: /ValueService/Dockerfile
+      args:
+        - BUILD_VERSION=latest
+
+  c_consul:
+    container_name: c_consul
+    image: consul:1.15.4
