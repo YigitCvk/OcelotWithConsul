@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj": {}
+    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj": {
+    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj",
+        "projectUniqueName": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj",
         "projectName": "OcelotWithConsul",
-        "projectPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj",
+        "projectPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\OcelotWithConsul\\OcelotWithConsul.csproj",
         "packagesPath": "C:\\Users\\yigit.cevik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\OcelotWithConsul\\obj\\",
+        "outputPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\OcelotWithConsul\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",

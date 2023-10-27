@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\ValueService\\ValueService.csproj": {}
+    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\ValueService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\ValueService\\ValueService.csproj": {
+    "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\ValueService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\ValueService\\ValueService.csproj",
+        "projectUniqueName": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\ValueService.csproj",
         "projectName": "ValueService",
-        "projectPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\ValueService\\ValueService.csproj",
+        "projectPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\ValueService.csproj",
         "packagesPath": "C:\\Users\\yigit.cevik\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\obj\\",
         "projectStyle": "PackageReference",
