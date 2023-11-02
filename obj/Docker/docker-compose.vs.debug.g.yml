@@ -13,7 +13,7 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
     volumes:
-      - C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotwithConsul\OcelotWithConsul:/app
+      - C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotWithConsul\OcelotWithConsul:/app
       - C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotWithConsul:/src
       - C:\Users\yigit.cevik\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\yigit.cevik\.nuget\packages\:/.nuget/packages:ro

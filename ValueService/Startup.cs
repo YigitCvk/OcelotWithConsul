@@ -51,8 +51,20 @@ namespace ValueService
             {
                 endpoints.MapControllers();
             });
-            app.RegisterWithConsul(lifetime,Configuration);
+            app.RegisterWithConsul(lifetime, Configuration);
 
+
+            static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .UseDefaultServiceProvider((context, options) =>
+            {
+                options.ValidateOnBuild = false;
+                options.ValidateScopes = false;
+            })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
         }
     }
 }

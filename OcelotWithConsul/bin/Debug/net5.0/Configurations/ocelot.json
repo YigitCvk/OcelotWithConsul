@@ -13,7 +13,21 @@
         "LoadBalancerOptions": {
           "Type": "RoundRobin"
         }
-      }
+      },
+      {
+        "UseServiceDiscovery": true,
+        "ServiceName": "LokiV2Service",
+        "DownstreamPathTemplate": "/api/loki/{everything}",
+        "DownstreamScheme": "http",
+
+        "UpstreamPathTemplate": "/loki/{everything}",
+        "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+        "UpstreamScheme": "http",
+        "RouteIsCaseSensitive": false,
+        "LoadBalancerOptions": {
+          "Type": "RoundRobin"
+        }
+     
     ],
 
     "GlobalConfiguration": {

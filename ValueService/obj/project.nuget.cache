@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y42kpTGYUXyRthNEhb4UePovD7zw+rk4bfgIflSDQ9H3TESe7jEjlMeIQFpMN4M4HENFy0lHHYu+1EKIpJNbhQ==",
+  "dgSpecHash": "nrD9wsCVKTEaBWQm6+wlnv0teURBpaLTRCNWw+kzBItH2u5dEbmDEXtz+liZRFHqrSBCt5fC1Xln2PCL9EGCxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotwithConsul\\ValueService\\ValueService.csproj",
+  "projectFilePath": "C:\\Users\\yigit.cevik\\Desktop\\Ocelot&Consul\\OcelotWithConsul\\ValueService\\ValueService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yigit.cevik\\.nuget\\packages\\consul\\1.7.14.1\\consul.1.7.14.1.nupkg.sha512",
     "C:\\Users\\yigit.cevik\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

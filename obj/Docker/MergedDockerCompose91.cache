@@ -1,0 +1,92 @@
+name: dockercompose17014053509078524232
+services:
+  c_consul:
+    container_name: c_consul
+    image: consul:1.15.4
+    networks:
+      net_backendservices: null
+      net_ocelotwithconsul: null
+    ports:
+      - mode: ingress
+        target: 8500
+        published: "8500"
+        protocol: tcp
+      - mode: ingress
+        target: 8600
+        published: "8600"
+        protocol: tcp
+      - mode: ingress
+        target: 8600
+        published: "8600"
+        protocol: udp
+  ocelotwithconsul:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotWithConsul
+      dockerfile: OcelotWithConsul/Dockerfile
+    container_name: ocelotwithconsul
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:5000
+    image: ocelotwithconsul
+    networks:
+      net_backendservices: null
+      net_ocelotwithconsul: null
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\yigit.cevik\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\yigit.cevik\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  valueservice:
+    build:
+      context: C:\Users\yigit.cevik\Desktop\Ocelot&Consul\OcelotWithConsul
+      dockerfile: /ValueService/Dockerfile
+      args:
+        BUILD_VERSION: latest
+    container_name: valueservice
+    depends_on:
+      c_consul:
+        condition: service_started
+        required: true
+      ocelotwithconsul:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:5004
+      ConsulConfig__Address: http://c_consul:8500
+      ConsulConfig__ServiceAddress: http://v_valueservice:5004
+      ConsulConfig__ServiceId: Value
+      ConsulConfig__ServiceName: ValueService
+    external_links:
+      - c_consul
+    image: valueservice
+    networks:
+      net_backendservices: null
+      net_ocelotwithconsul: null
+    ports:
+      - mode: ingress
+        target: 5004
+        published: "5004"
+        protocol: tcp
+networks:
+  net_backendservices:
+    name: net_backendservices
+    driver: bridge
+    external: true
+  net_ocelotwithconsul:
+    name: net_ocelotwithconsul
+    driver: bridge
+    external: true
